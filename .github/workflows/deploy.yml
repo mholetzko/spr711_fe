@@ -27,4 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: docker build --tag srp711_ci_build
+        run: docker build --tag srp711_ci_build .
