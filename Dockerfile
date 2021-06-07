@@ -12,4 +12,4 @@ RUN npm install --production
 COPY . .
 RUN rm -rf .env.development
 RUN rm -rf .env.production
-CMD [ "bash"]
+CMD [ "npm","start"]
