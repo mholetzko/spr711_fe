@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "../../../graphql-test-server"
+	},
+	{
+		"path": "../.."
+	},
+	{
+		"path": "../../../complete-javascript-course/13-Advanced-DOM-Bankist"
+	}
+],
+  "settings": {}
+}
