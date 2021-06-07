@@ -27,7 +27,6 @@ async function fetchFood(props: any): Promise<any> {
     }
   `;
   const gqlApi: string = String(process.env.REACT_APP_FOODAPI_URI);
-  alert(gqlApi);
   const res = await fetch(gqlApi, {
     method: "POST",
     headers: {
