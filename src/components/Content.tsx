@@ -245,6 +245,12 @@ const Content = () => {
           <h3 className="section__header">...</h3>
         </div>
       </section>
+      <section className="section__wrapper" id="section--api-doc">
+        <div className="section__wrapped">
+          <h2 className="section__description">API documentation</h2>
+          <h3 className="section__header">...</h3>
+        </div>
+      </section>
     </main>
   );
 };

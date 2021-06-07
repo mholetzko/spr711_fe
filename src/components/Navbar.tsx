@@ -18,6 +18,11 @@ const Navbar = () => {
             </a>
           </li>
           <li className="nav__item">
+            <a className="nav__link" href="#section--api-doc">
+              Api
+            </a>
+          </li>
+          <li className="nav__item">
             <a className="nav__link nav__link--btn btn--show-modal" href="#">
               Add Store
             </a>
