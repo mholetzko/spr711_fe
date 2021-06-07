@@ -27,7 +27,7 @@ async function fetchFood(props: any): Promise<any> {
     }
   `;
   const gqlApi: string = String(process.env.GQL_FOOD_API);
-  alert(gqlApi);
+
   const res = await fetch(gqlApi, {
     method: "POST",
     headers: {
@@ -60,7 +60,6 @@ const currentMonth: String = monthNames[month];
 
 const Content = () => {
   const [showHarvest, setShowHarvest] = useState<boolean>(true);
-  const [showStorage, setShowStorage] = useState<boolean>(false);
   const [showFruits, setshowFruits] = useState<boolean>(true);
   const [showSalat, setshowSalat] = useState<boolean>(true);
   const [showVegetables, setshowVegetables] = useState<boolean>(true);
@@ -76,7 +75,8 @@ const Content = () => {
     );
   };
 
-  const buildTableBody = (pending: boolean, data: any) => {
+  const buildTableBody = (pending: boolean, data: any, error: any) => {
+    alert(error);
     if (pending) {
       return (
         <div className="grid_wrapper">
@@ -134,7 +134,6 @@ const Content = () => {
 
   const setStatusHarvest = () => {
     setShowHarvest(true);
-    setShowStorage(false);
     setreSyncApi(!reSyncApi);
     document
       .getElementById("showStorage")
@@ -146,7 +145,6 @@ const Content = () => {
 
   const setStatusStorage = () => {
     setShowHarvest(false);
-    setShowStorage(true);
     setreSyncApi(!reSyncApi);
     document
       .getElementById("showHarvest")
@@ -229,7 +227,7 @@ const Content = () => {
               Aus dem Lager
             </button>
           </div>
-          {buildTableBody(isPending, data)}
+          {buildTableBody(isPending, data, error)}
         </div>
       </section>
       <section className="section__wrapper" id="section--about">
