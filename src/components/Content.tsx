@@ -26,7 +26,7 @@ async function fetchFood(props: any): Promise<any> {
       }
     }
   `;
-  const gqlApi: string = String(process.env.GQL_FOOD_API);
+  const gqlApi: string = String(process.env.REACT_APP_FOODAPI_URI);
 
   const res = await fetch(gqlApi, {
     method: "POST",
@@ -76,11 +76,16 @@ const Content = () => {
   };
 
   const buildTableBody = (pending: boolean, data: any, error: any) => {
-    alert(error);
     if (pending) {
       return (
         <div className="grid_wrapper">
           <div className="one">Loading data ...</div>
+        </div>
+      );
+    } else if (error) {
+      return (
+        <div className="grid_wrapper">
+          <div className="one">Could not fetch API ...</div>
         </div>
       );
     } else {
