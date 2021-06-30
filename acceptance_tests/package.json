@@ -1,0 +1,11 @@
+{
+  "name": "gauge-ts-template",
+  "description": "Starter template for writing TypeScript tests for Gauge",
+  "dependencies": {
+    "gauge-ts": "0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "taiko": "^1.0.26"
+  }
+}
