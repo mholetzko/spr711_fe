@@ -17,10 +17,28 @@ const monthNames = [
   "December",
 ];
 
+const monthNamesInSchema = [
+  "JAN",
+  "FEB",
+  "MAR",
+  "APR",
+  "MAI",
+  "JUN",
+  "JUL",
+  "AUG",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DEC",
+];
+
 async function fetchFood(props: any): Promise<any> {
+  let month = dateObj.getUTCMonth();
+  const currentMonth: String = monthNamesInSchema[month];
+  console.log(currentMonth);
   const foodQuery = `
     query getFood {
-      food_by_month(month:["JUN"],harvest:${props.harvest}) {
+      food_by_month(month:[${currentMonth}],harvest:${props.harvest}) {
         name
         type
       }
