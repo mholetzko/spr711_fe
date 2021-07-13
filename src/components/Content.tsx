@@ -1,6 +1,7 @@
 //Content.js
 import React, { useState } from "react";
 import { useAsync } from "react-async";
+import { fetchFood } from "./FoodApi";
 
 const monthNames = [
   "January",
@@ -16,59 +17,11 @@ const monthNames = [
   "November",
   "December",
 ];
-
-const monthNamesInSchema = [
-  "JAN",
-  "FEB",
-  "MAR",
-  "APR",
-  "MAI",
-  "JUN",
-  "JUL",
-  "AUG",
-  "SEP",
-  "OCT",
-  "NOV",
-  "DEC",
-];
-
-async function fetchFood(props: any): Promise<any> {
-  let month = dateObj.getUTCMonth();
-  const currentMonth: String = monthNamesInSchema[month];
-  console.log(currentMonth);
-  const foodQuery = `
-    query getFood {
-      food_by_month(month:[${currentMonth}],harvest:${props.harvest}) {
-        name
-        type
-      }
-    }
-  `;
-  const gqlApi: string = String(process.env.REACT_APP_FOODAPI_URI);
-  const res = await fetch(gqlApi, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json;charset=UTF-8",
-    },
-    body: JSON.stringify({
-      query: foodQuery,
-    }),
-  });
-  if (!res.ok) {
-    throw new Error(res.statusText);
-  }
-  return res.json();
-}
-
 interface IApiSample {
   name: String;
   type: String;
   harvest_season: [String];
   storage_season: [String];
-}
-
-interface IApiData {
-  data: [IApiSample];
 }
 
 let dateObj = new Date();
@@ -135,6 +88,7 @@ const Content = () => {
       );
     }
   };
+
   let { data, error, isPending } = useAsync({
     promiseFn: fetchFood,
     harvest: showHarvest,
