@@ -36,3 +36,45 @@
     transform: rotate(360deg);
   }
 }
+
+.App-pre-scrollable {
+    max-height: 850px;
+    overflow-y: scroll;
+  }
+
+.App-container-fluid {
+width: 75%;
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+}
+
+.App-section {
+   height:100vh
+}
+
+.App-card-body-veggie {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    background-color:#F5DEB3;
+}
+
+.App-card-body-fruit {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    background-color:#FFE4E1;
+}
+
+.App-card-body-salat {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    background-color:#98FB98;
+}
+
