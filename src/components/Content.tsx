@@ -31,6 +31,7 @@ const currentMonth: String = monthNames[month];
 
 const Content = () => {
     const [showHarvest, setShowHarvest] = useState<boolean>(true);
+    const [harvestString, setHarvestString] = useState<string>("Frisch vom Feld");
     const [showFruits, setshowFruits] = useState<boolean>(true);
     const [showSalat, setshowSalat] = useState<boolean>(true);
     const [showVegetables, setshowVegetables] = useState<boolean>(true);
@@ -79,13 +80,13 @@ const Content = () => {
                             }
                             return (
                                 <>
-                                <div className="col-md-3 pb-1 pb-md-0">
+                                <div className="col-md-2 pb-3 pb-md-3">
                                     <div className="card">
                                         <div className="card-header">
                                             <img justify-content="center" width="20%" src={Logo} alt="Card image cap" className="rounded" />
                                         </div>
                                         <div className={getClassFromFoodType(foodArr["type"])}>
-                                            <h5 className="card-title">{foodArr["name"]}</h5>
+                                            <div className="card-title">{foodArr["name"]}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -151,25 +152,19 @@ const Content = () => {
     };
 
     const setStatusHarvest = () => {
-        setShowHarvest(true);
-        setreSyncApi(!reSyncApi);
+        setShowHarvest(!showHarvest);        
+        if (!showHarvest) {
         document
             .getElementById("showStorage")
-            ?.classList.remove("food_info__tab--active");
+            ?.classList.add("active");
+            setHarvestString("Frisch vom Feld")
+        } else {
         document
             .getElementById("showHarvest")
-            ?.classList.add("food_info__tab--active");
-    };
-
-    const setStatusStorage = () => {
-        setShowHarvest(false);
+            ?.classList.remove("active");
+            setHarvestString("Aus dem Lager")
+        }
         setreSyncApi(!reSyncApi);
-        document
-            .getElementById("showHarvest")
-            ?.classList.remove("food_info__tab--active");
-        document
-            .getElementById("showStorage")
-            ?.classList.add("food_info__tab--active");
     };
 
     return (
@@ -188,34 +183,19 @@ const Content = () => {
                     </div>
                 </div>
                 <div className="section__title">
-                    <div className="container">
-                        <div className="row text-center">
-                            
-                            <div className="col-md-4 pb-1 pb-md-0">
+                <div className="App-container-fluid">
+                    <div className="row text-center mt-4">
+                            <div className="col-md-3 pb-3 pb-md-3">
                                 <button  type="button" onClick={setStatusVegetables} id="veggie-button" className="btn btn-outline-success active"  >{Veggie}Vegetables</button></div>
-                            <div className="col-md-4 pb-1 pb-md-0">
+                            <div className="col-md-3 pb-3 pb-md-3">
                                 <button type="button" onClick={setStatusFruits} id="fruit-button" className="btn btn-outline-success active"  >{Fruit}Fruit</button></div>
-                            <div className="col-md-4 pb-1 pb-md-0">
-                                <button type="button" onClick={setStatusSalat} id="salat-button" className="btn btn-outline-success active"  >{Salat}Salat</button></div>
+                            <div className="col-md-3 pb-3 pb-md-3">
+                                <button type="button" onClick={setStatusSalat} id="salat-button" className="btn btn-outline-success active"  >{Salat}Salat</button>
+                            </div>
+                            <div className="col-md-3 pb-3 pb-md-3">
+                                <button type="button" onClick={setStatusHarvest} id="showStorage" className="btn btn-outline-success active"  >{harvestString}</button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className="food_info">
-                    <div className="food_info__tab-container">
-                        <button
-                            className="btn food_info__tab food_info__tab--1 food_info__tab--active"
-                            id="showHarvest"
-                            onClick={setStatusHarvest}
-                        >
-                            Frisch vom Feld
-                        </button>
-                        <button
-                            className="btn food_info__tab food_info__tab--2"
-                            id="showStorage"
-                            onClick={setStatusStorage}
-                        >
-                            Aus dem Lager
-                        </button>
                     </div>
                 </div>
             </section>

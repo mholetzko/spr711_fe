@@ -60,6 +60,7 @@ margin-left: auto;
     min-height: 1px;
     padding: 1.25rem;
     background-color:#F5DEB3;
+    font-size:1.5vw
 }
 
 .App-card-body-fruit {
@@ -68,6 +69,7 @@ margin-left: auto;
     min-height: 1px;
     padding: 1.25rem;
     background-color:#FFE4E1;
+    font-size:1.5vvw
 }
 
 .App-card-body-salat {
@@ -76,5 +78,6 @@ margin-left: auto;
     min-height: 1px;
     padding: 1.25rem;
     background-color:#98FB98;
+    font-size:1.5vw
 }
 
